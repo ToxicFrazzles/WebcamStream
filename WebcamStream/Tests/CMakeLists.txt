@@ -1,0 +1,3 @@
+find_library(NetMessageTest Common)
+add_executable(NetMessageTest NetMessage.cpp)
+target_link_libraries(NetMessageTest Common)

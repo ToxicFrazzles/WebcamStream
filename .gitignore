@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# CLion IDE files
+.idea
+
+# cmake files
+/WebcamStream/cmake-build-debug/
