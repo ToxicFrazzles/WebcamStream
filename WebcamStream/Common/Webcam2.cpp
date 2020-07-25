@@ -58,7 +58,8 @@ int Webcam2::getPacket(AVPacket **outPacket)
 	if(ifmt_ctx->streams[pkt->stream_index]->codecpar->codec_id == AV_CODEC_ID_H264){
 		*outPacket = pkt;
 		if(!alerted){
-			std::cout << ""
+			std::cout << "Input and output formats are H.264 so we don't need to transcode." << std::endl;
+			alerted = true;
 		}
 	}else{
 		avcodec_send_packet(video_dec_ctx,pkt);
@@ -66,6 +67,10 @@ int Webcam2::getPacket(AVPacket **outPacket)
 		avcodec_send_frame(video_enc_ctx, frame);
 		avcodec_receive_packet(video_enc_ctx, pkt);
 		*outPacket = pkt;
+		if(!alerted){
+			std::cout << "Input and output formats are different so we need to transcode." << std::endl;
+			alerted = true;
+		}
 	}
 	return ret;
 }
