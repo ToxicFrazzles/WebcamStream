@@ -36,3 +36,4 @@
 
 # cmake files
 /WebcamStream/cmake-build-debug/
+/WebcamStream/build/
