@@ -4,7 +4,7 @@
 
 int main()
 {
-	struct v4l2_fmtdesc *formats = (struct v4l2_fmtdesc *)reallocarray(nullptr,1, sizeof(v4l2_fmtdesc));		// Allocate just enough memory to reallocate it inside the listFormats method
+	struct v4l2_fmtdesc *formats = nullptr;
 	int formatCount = Webcam::listFormats("/dev/video0", &formats);
 
 	std::cout << "The webcam supports the following formats:" << std::endl;
