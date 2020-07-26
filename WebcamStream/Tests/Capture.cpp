@@ -1,14 +1,14 @@
 #include <iostream>
 #include <fstream>
 
-#include "Webcam2.h"
+#include "Webcam.h"
 
 #define XRES 1280
 #define YRES 720
 
 int main(int argc, char **argv) {
 
-	Webcam2 webcam("/dev/video0");
+	Webcam webcam("/dev/video0");
 	AVPacket *packet = av_packet_alloc();
 	int count = 0;
 	while(true){
@@ -17,6 +17,7 @@ int main(int argc, char **argv) {
 			std::cerr << "Capturing packet failed. Num: " << count << std::endl;
 			break;
 		}
+
 		++count;
 	}
 
